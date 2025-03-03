@@ -17,7 +17,7 @@ const getRequestBody = async (req: IncomingMessage): Promise<any> => {
 }
 
 const handleRequest = async (req: IncomingMessage, res: ServerResponse) => {
-  if (req.method === "POST" && req.url === "/user") {
+  if (req.method === "POST" && req.url === "/user/") {
     try {
       const { email, password } = await getRequestBody(req)
       const newUser = createUserUseCase({ email, password })
