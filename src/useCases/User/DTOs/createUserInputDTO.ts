@@ -7,11 +7,11 @@ export class CreateUserDTO {
     this._password = password
   }
 
-  get email(): string {
+  public get email(): string {
     return this._email
   }
 
-  get password(): string {
+  public get password(): string {
     return this._password
   }
 }

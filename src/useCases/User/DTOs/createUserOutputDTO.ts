@@ -7,11 +7,11 @@ export class CreateUserOutputDTO {
     this._email = email;
   }
 
-  get id(): string {
+  public get id(): string {
     return this._id
   }
 
-  get email(): string {
+  public get email(): string {
     return this._email;
   }
 }
