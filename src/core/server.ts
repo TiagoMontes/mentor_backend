@@ -1,5 +1,5 @@
 import { createServer, IncomingMessage, ServerResponse } from "http"
-import {createUser, createUserUseCase} from "../useCases/User/createUserUseCase"
+import { createUserUseCase } from "../useCases/User/createUserUseCase"
 
 const getRequestBody = async (req: IncomingMessage): Promise<any> => {
   return new Promise((resolve, reject) => {
