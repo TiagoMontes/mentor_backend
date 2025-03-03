@@ -1,14 +1,10 @@
-import { createUser } from "../useCases/User/createUserUseCase"
+import {createUserUseCase} from "../useCases/User/createUserUseCase";
+import {CreateUserDTO} from "../useCases/User/DTOs/createUserInputDTO";
 
-interface UserProps {
-  email: string
-  password: string
-}
-
-test("Should create a user with email and password", () => {
-  const user = createUser({email: "tiago@email.com", password: "123456"})
+test("Should create a user with id and email", () => {
+  const userDto = new CreateUserDTO("tiago@email.com", "123456")
+  const user = createUserUseCase(userDto)
 
   expect(user).toHaveProperty("id")
   expect(user.email).toBe("tiago@email.com")
-  expect(user.password).toBe("123456")
 })
