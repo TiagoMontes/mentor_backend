@@ -6,7 +6,8 @@ export class User {
   private readonly _password: string
   private readonly _createdAt: Date
 
-  constructor(firstName: string, lastName: string, email: string, password: string, createdAt?: Date) {
+  constructor(firstName: string, lastName: string, email: string, password: string, createdAt?: Date, id?: string) {
+    this._id = id || undefined
     this._firstName = firstName
     this._lastName = lastName
     this._email = email
@@ -36,5 +37,14 @@ export class User {
 
   get createdAt(): Date {
     return this._createdAt
+  }
+
+  public toJSON() {
+    return {
+      id: this.id,
+      firstName: this.firstName,
+      lastName: this.lastName,
+      email: this.email,
+    }
   }
 }
