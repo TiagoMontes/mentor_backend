@@ -11,3 +11,10 @@ test("Should receive user data and return it without the password", () => {
   expect(user.lastName).toBe("Montes")
   expect(user).not.toHaveProperty("password")
 })
+
+test("Should throw error if password has less than 6 characters", () => {
+  expect(() => {
+    new CreateUserInputDTO("test", "test", "test@email.com", "123")
+  }).toThrowError("Password needs minimum 6 characters long")
+
+})
