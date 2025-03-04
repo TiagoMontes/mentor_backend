@@ -1,5 +1,6 @@
 import { createServer, IncomingMessage, ServerResponse } from "http"
 import { createUserUseCase } from "../useCases/User/createUserUseCase"
+import {CreateUserDTO} from "../useCases/User/DTOs/createUserInputDTO";
 
 const getRequestBody = async (req: IncomingMessage): Promise<any> => {
   return new Promise((resolve, reject) => {
@@ -20,7 +21,8 @@ const handleRequest = async (req: IncomingMessage, res: ServerResponse) => {
   if (req.method === "POST" && req.url === "/user/") {
     try {
       const { email, password } = await getRequestBody(req)
-      const newUser = createUserUseCase({ email, password })
+      const userDto = new CreateUserDTO(email, password)
+      const newUser = createUserUseCase(userDto)
 
       res.writeHead(201, { "Content-Type": "application/json" })
       return res.end(JSON.stringify(newUser))
