@@ -1,10 +1,10 @@
-import {User} from "../../../domain/user";
+import {User} from "../../../domain/user"
 
 export class CreateUserOutputDTO {
-  private readonly _id?: string;
-  private readonly _firstName: string;
-  private readonly _lastName: string;
-  private readonly _email: string;
+  private readonly _id?: string
+  private readonly _firstName: string
+  private readonly _lastName: string
+  private readonly _email: string
 
   constructor(data: User) {
     this._id = data.id
@@ -14,19 +14,19 @@ export class CreateUserOutputDTO {
   }
 
   public get id(): string | undefined {
-    return this._id;
+    return this._id
   }
 
   public get firstName(): string {
     return this._firstName
-  }
+  };
 
   public get lastName(): string {
     return this._lastName
   }
 
   public get email(): string {
-    return this._email;
+    return this._email
   }
 
   public toJSON() {

@@ -1,7 +1,7 @@
-import {User} from "../../domain/user";
-import {CreateUserInputDTO} from "./DTOs/createUserInputDTO";
-import {CreateUserOutputDTO} from "./DTOs/createUserOutputDTO";
-import {UserFactory} from "../../factory/UserFactory";
+import {User} from "../../domain/user"
+import {CreateUserInputDTO} from "./DTOs/createUserInputDTO"
+import {CreateUserOutputDTO} from "./DTOs/createUserOutputDTO"
+import {UserFactory} from "../../factory/UserFactory"
 
 interface CreateUserOutputJSON {
   id?: string;
@@ -16,5 +16,5 @@ export const createUserUseCase = (data: CreateUserInputDTO): CreateUserOutputJSO
 
   const outputDTO = new CreateUserOutputDTO(user)
 
-  return outputDTO.toJSON();
+  return outputDTO.toJSON()
 }

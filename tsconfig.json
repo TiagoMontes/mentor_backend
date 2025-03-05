@@ -1,9 +1,13 @@
 {
   "compilerOptions": {
-    "target": "ES6",
-    "module": "CommonJS",
+    "target": "ES2021",
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "outDir": "./dist",
     "rootDir": "./src",
-    "strict": true
-  }
+    "strict": true,
+    "esModuleInterop": true, // 🔧 Permite melhor compatibilidade com `import/export`
+    "resolveJsonModule": true, // 🔧 Permite importar JSONs diretamente,
+    "allowSyntheticDefaultImports": true
+  },
 }

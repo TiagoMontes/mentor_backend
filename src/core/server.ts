@@ -1,9 +1,16 @@
 import { createServer, IncomingMessage, ServerResponse } from "http"
 import { createUserUseCase } from "../useCases/User/createUserUseCase"
-import {CreateUserInputDTO} from "../useCases/User/DTOs/createUserInputDTO";
-import {UserRepository} from "../repository/UserRepository";
+import {CreateUserInputDTO} from "../useCases/User/DTOs/createUserInputDTO"
+import {UserRepository} from "../repository/UserRepository"
 
-const getRequestBody = async (req: IncomingMessage): Promise<any> => {
+interface CreateUserInterface {
+  firstName: string
+  lastName: string
+  email: string
+  password: string
+}
+
+const getRequestBody = async (req: IncomingMessage): Promise<CreateUserInterface> => {
   return new Promise((resolve, reject) => {
     let body = ""
     req.on("data", (chunk) => (body += chunk.toString()))
@@ -28,6 +35,7 @@ const handleRequest = async (req: IncomingMessage, res: ServerResponse) => {
       res.writeHead(200, { "Content-Type": "application/json" })
       return res.end(JSON.stringify(newUser))
     } catch (error) {
+      console.error(error)
       res.writeHead(400, { "Content-Type": "application/json" })
       return res.end(JSON.stringify({ error: "Dados inválidos" }))
     }
@@ -35,10 +43,10 @@ const handleRequest = async (req: IncomingMessage, res: ServerResponse) => {
 
   if (req.method === "GET" && req.url?.startsWith("/user/") && req.url != null) {
     try {
-      const id = req.url.split("/user/")[1];
+      const id = req.url.split("/user/")[1]
 
       if(!id) {
-        throw new Error("User ID is required.");
+        throw new Error("User ID is required.")
       }
 
       const userRepository = new UserRepository()
@@ -47,6 +55,7 @@ const handleRequest = async (req: IncomingMessage, res: ServerResponse) => {
       res.writeHead(200, { "Content-Type": "application/json" })
       return res.end(JSON.stringify(user.toJSON()))
     } catch (error) {
+      console.error(error)
       res.writeHead(400, { "Content-Type": "application/json" })
       return res.end(JSON.stringify({ error: "Dados inválidos" }))
     }
