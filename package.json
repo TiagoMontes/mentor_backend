@@ -25,11 +25,6 @@
     "clearMocks": true,
     "testPathIgnorePatterns": ["<rootDir>/dist/"]
   },
-    "roots": ["<rootDir>/src/tests"],
-    "collectCoverage": true,
-    "coverageDirectory": "coverage",
-    "clearMocks": true
-  },
   "author": "",
   "license": "ISC",
   "description": "",
