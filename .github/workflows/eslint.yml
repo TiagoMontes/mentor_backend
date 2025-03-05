@@ -40,24 +40,8 @@ jobs:
       - name: Run ESLint Fix
         run: npm run lint:fix
 
-      - name: Create reports directory
-        run: mkdir -p reports
-
       - name: Run ESLint
         env:
           SARIF_ESLINT_IGNORE_SUPPRESSED: "true"
-        run: npm run lint -- --format @microsoft/eslint-formatter-sarif --output-file reports/eslint-results.sarif
+        run: npm run lint -- --format @microsoft/eslint-formatter-sarif --output-file eslint-results.sarif
         continue-on-error: true
-
-      - name: Check if SARIF file exists
-        run: |
-          if [ ! -f reports/eslint-results.sarif ]; then
-            echo "ESLint SARIF file not found! Skipping upload."
-            exit 1
-          fi
-
-      - name: Upload analysis results to GitHub
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: reports/eslint-results.sarif
-          wait-for-processing: true
