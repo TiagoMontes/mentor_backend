@@ -6,8 +6,8 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "strict": true,
-    "esModuleInterop": true, // 🔧 Permite melhor compatibilidade com `import/export`
-    "resolveJsonModule": true, // 🔧 Permite importar JSONs diretamente,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true
   },
 }

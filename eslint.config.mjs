@@ -6,9 +6,9 @@ import tseslint from "typescript-eslint"
 export default [
   {
     files: ["**/*.{js,mjs,cjs,ts}"],
-    ignores: ["dist/", "node_modules/"] // 🚀 Ignora arquivos transpilados e pacotes
+    ignores: ["dist/", "node_modules/"]
   },
-  { languageOptions: { globals: globals.node } }, // 📌 Corrige `process is not defined`
+  { languageOptions: { globals: globals.node } },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   {
@@ -19,9 +19,9 @@ export default [
       }
     },
     rules: {
-      "semi": ["error", "never"], // ❌ Sem ponto e vírgula
-      "quotes": ["error", "double"], // ⚡ Aspas duplas
-      "indent": ["error", 2], // 🏗️ Indentação de 2 espaços
+      "semi": ["error", "never"],
+      "quotes": ["error", "double"],
+      "indent": ["error", 2],
       "@typescript-eslint/no-unused-vars": "warn",
       "no-undef": "off"
     }
