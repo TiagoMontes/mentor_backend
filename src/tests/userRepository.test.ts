@@ -1,5 +1,5 @@
-import {UserRepository} from "../repository/UserRepository"
-import {User} from "../domain/user"
+import {UserRepository} from "../infrastructure/repositories/UserRepository"
+import {User} from "../core/domain/user"
 
 test("Should receive id and return this same id User", async () => {
   const idSent = "123"
