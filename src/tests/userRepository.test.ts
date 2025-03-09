@@ -1,20 +1,30 @@
-import {UserRepository} from "../infrastructure/repositories/UserRepository"
-import {User} from "../core/domain/user"
+import { UserRepository } from "../infrastructure/repositories/UserRepository"
+import { User } from "../core/domain/user"
 
-test("Should receive id and return this same id User", async () => {
-  const idSent = "123"
+describe("UserRepository", () => {
+  let userRepository: UserRepository
 
-  const userRepository = new UserRepository()
-  const user = await userRepository.findById(idSent)
+  beforeEach(() => {
+    userRepository = new UserRepository()
+  })
 
-  expect(user.id).toBe(idSent)
-})
+  it("should receive an ID and return a User with the same ID", async () => {
+    const idSent = "123"
+    const user = await userRepository.findById(idSent)
 
-test("Should return a instance of User", async () => {
-  const idSent = "123"
+    expect(user.id).toBe(idSent)
+    expect(user).toBeInstanceOf(User)
+    expect(user.firstName).toBe("Tiago")
+    expect(user.lastName).toBe("Montes")
+    expect(user.email).toBe("tiago@gmail.com")
+    expect(user.password).toBe("123456")
+    expect(user.createdAt).toBeInstanceOf(Date)
+  })
 
-  const userRepository = new UserRepository()
-  const user = await userRepository.findById(idSent)
+  it("should return an instance of User", async () => {
+    const idSent = "123"
+    const user = await userRepository.findById(idSent)
 
-  expect(user).toBeInstanceOf(User)
+    expect(user).toBeInstanceOf(User)
+  })
 })

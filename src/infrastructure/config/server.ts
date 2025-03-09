@@ -1,7 +1,7 @@
 import { createServer, IncomingMessage, ServerResponse } from "http"
-import {CreateUserInputDTO} from "../../core/useCases/User/DTOs/createUserInputDTO";
-import {createUserUseCase} from "../../core/useCases/User/createUserUseCase";
-import {UserRepository} from "../repositories/UserRepository";
+import {CreateUserInputDTO} from "../../core/useCases/User/DTOs/createUserInputDTO"
+import {createUserUseCase} from "../../core/useCases/User/createUserUseCase"
+import {UserRepository} from "../repositories/UserRepository"
 
 
 interface CreateUserInterface {

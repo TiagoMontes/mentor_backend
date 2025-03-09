@@ -12,4 +12,4 @@ module.exports = {
   coverageDirectory: "coverage",
   clearMocks: true,
   testPathIgnorePatterns: ["<rootDir>/dist/"],
-};
+}
