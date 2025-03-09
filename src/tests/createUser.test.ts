@@ -1,5 +1,5 @@
-import {createUserUseCase} from "../useCases/User/createUserUseCase"
-import {CreateUserInputDTO} from "../useCases/User/DTOs/createUserInputDTO"
+import {createUserUseCase} from "../core/useCases/User/createUserUseCase"
+import {CreateUserInputDTO} from "../core/useCases/User/DTOs/createUserInputDTO"
 
 test("Should receive user data and return it without the password", () => {
   const userDto = new CreateUserInputDTO("Tiago", "Montes", "tiago@email.com", "123456")

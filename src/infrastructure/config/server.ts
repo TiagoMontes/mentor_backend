@@ -1,7 +1,8 @@
 import { createServer, IncomingMessage, ServerResponse } from "http"
-import { createUserUseCase } from "../useCases/User/createUserUseCase"
-import {CreateUserInputDTO} from "../useCases/User/DTOs/createUserInputDTO"
-import {UserRepository} from "../repository/UserRepository"
+import {CreateUserInputDTO} from "../../core/useCases/User/DTOs/createUserInputDTO"
+import {createUserUseCase} from "../../core/useCases/User/createUserUseCase"
+import {UserRepository} from "../repositories/UserRepository"
+
 
 interface CreateUserInterface {
   firstName: string
@@ -66,6 +67,6 @@ const handleRequest = async (req: IncomingMessage, res: ServerResponse) => {
 }
 
 const server = createServer(handleRequest)
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3001
 
 server.listen(PORT, () => console.log(`Servidor rodando em http://localhost:${PORT}`))
