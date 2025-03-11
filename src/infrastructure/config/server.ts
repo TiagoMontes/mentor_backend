@@ -31,10 +31,12 @@ const handleRequest = async (req: IncomingMessage, res: ServerResponse) => {
     try {
       const { firstName, lastName, email, password } = await getRequestBody(req)
       const userDto = new CreateUserInputDTO(firstName, lastName, email, password)
-      const newUser = createUserUseCase(userDto)
+      const userRepository = new UserRepository()
+      const createUser = createUserUseCase(userRepository)
+      const result = await createUser(userDto)
 
       res.writeHead(200, { "Content-Type": "application/json" })
-      return res.end(JSON.stringify(newUser))
+      return res.end(JSON.stringify(result))
     } catch (error) {
       console.error(error)
       res.writeHead(400, { "Content-Type": "application/json" })
