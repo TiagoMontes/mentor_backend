@@ -3,5 +3,5 @@ import {CreateUserInputDTO} from "../useCases/User/DTOs/createUserInputDTO"
 
 export interface IUserRepository {
   createUser(user: CreateUserInputDTO): Promise<User>
-  findById(id: string): Promise<User>
+  findById(id: string): Promise<User | null>
 }
